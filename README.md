@@ -1,1 +1,1 @@
-# HeadlinesApp
+A newsfeed app with microservices and DDD
