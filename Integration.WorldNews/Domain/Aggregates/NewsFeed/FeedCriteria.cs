@@ -52,7 +52,7 @@
         {
             Language = "en";
             PublishDate = new PublishDate(DateTime.UtcNow, DateTime.UtcNow.AddHours(-23));
-            LocationFilter = new LocationFilter("New York", "-73.935242", "40.730610");
+            LocationFilter = new LocationFilter("New York", "-73.935242", "40.730610", 100);
             FeedLength = 20;
             Direction = SortDirection.desc;
         }

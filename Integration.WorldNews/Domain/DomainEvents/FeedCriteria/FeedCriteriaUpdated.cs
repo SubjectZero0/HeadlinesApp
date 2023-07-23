@@ -8,12 +8,14 @@ using Domain.Aggregates.NewsFeed;
 
 namespace Domain.DomainEvents.NewsFeed
 {
-    public class AddOrUpdateFeedCriteria : DomainEvent
+    public class FeedCriteriaUpdated : DomainEvent
     {
+        public Guid? NewsFeedId { get; private set; }
         public FeedCriteriaVO FeedCriteria { get; private set; }
 
-        public AddOrUpdateFeedCriteria(FeedCriteriaVO feedCriteria, Article[] articles)
+        public FeedCriteriaUpdated(Guid? newsFeedId, FeedCriteriaVO feedCriteria)
         {
+            NewsFeedId = newsFeedId;
             FeedCriteria = feedCriteria;
         }
     }

@@ -7,11 +7,11 @@ using NewsFeedRoot = Domain.Aggregates.NewsFeed.NewsFeed;
 
 namespace Domain.DomainEvents.NewsFeed
 {
-    public class AddOrdUpdateNewsFeed : DomainEvent
+    public class NewsFeedCreated : DomainEvent
     {
         public NewsFeedRoot NewsFeed { get; private set; }
 
-        public AddOrdUpdateNewsFeed(NewsFeedRoot newsFeed)
+        public NewsFeedCreated(NewsFeedRoot newsFeed)
         {
             NewsFeed = newsFeed;
         }
