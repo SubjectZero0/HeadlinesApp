@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beaurdaux.Headlines.Shared.Messages", "Beaurdaux.Headlines.Shared.Messages\Beaurdaux.Headlines.Shared.Messages.csproj", "{371DDCA3-6EF6-4699-A1EB-B42A84A26140}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeadlinesApp", "HeadlinesApp\HeadlinesApp.csproj", "{8A272A39-63BF-4CC6-A64C-FA4D0FFD2EF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldNews", "WorldNews\WorldNews.csproj", "{9F5B757E-69D0-4F45-9A7E-1C5AD744C8DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{371DDCA3-6EF6-4699-A1EB-B42A84A26140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{371DDCA3-6EF6-4699-A1EB-B42A84A26140}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{371DDCA3-6EF6-4699-A1EB-B42A84A26140}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{371DDCA3-6EF6-4699-A1EB-B42A84A26140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A272A39-63BF-4CC6-A64C-FA4D0FFD2EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A272A39-63BF-4CC6-A64C-FA4D0FFD2EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A272A39-63BF-4CC6-A64C-FA4D0FFD2EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A272A39-63BF-4CC6-A64C-FA4D0FFD2EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F5B757E-69D0-4F45-9A7E-1C5AD744C8DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F5B757E-69D0-4F45-9A7E-1C5AD744C8DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F5B757E-69D0-4F45-9A7E-1C5AD744C8DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F5B757E-69D0-4F45-9A7E-1C5AD744C8DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
