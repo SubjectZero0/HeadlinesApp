@@ -9,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Domain.Aggregates.NewsFeed.FeedCriteria;
+using static HeadlinesApp.FeedCriteriaMessage;
+using SortDirection = Domain.Aggregates.NewsFeed.FeedCriteria.SortDirection;
 
 namespace Domain.Services
 {
     public interface IFeedCriteriaProcessor
     {
+        public FeedCriteriaUpdated? GenerateDomainEventForCreateOrUpdate(FeedCriteriaMessage message);
     }
 
     public class FeedCriteriaProcessor : IFeedCriteriaProcessor
@@ -25,23 +28,47 @@ namespace Domain.Services
             _logger = logger;
         }
 
-        public FeedCriteriaUpdated Process(FeedCriteriaMessage message)
+        public FeedCriteriaUpdated? GenerateDomainEventForCreateOrUpdate(FeedCriteriaMessage message)
         {
-            var publishDate = new PublishDate(
-                from: message.PublishDateFrom,
-                to: message.PublishDateTo);
+            try
+            {
+                var publishDate = new PublishDate(
+                    from: message.PublishDateFrom,
+                    to: message.PublishDateTo);
 
-            var locationFilter = new LocationFilter(
-                locationName: message.LocationName,
-                longtitude: message.Longtitude,
-                latitude: message.Latitude,
-                radiusKm: message.RadiusKm);
+                var locationFilter = new LocationFilter(
+                    locationName: message.LocationName,
+                    longtitude: message.Longtitude,
+                    latitude: message.Latitude,
+                    radiusKm: message.RadiusKm);
 
-            return new FeedCriteriaUpdated(newsFeedId: null, feedCriteria: new FeedCriteria(language: message.Language,
-                                                                                            publishDate: publishDate,
-                                                                                            locationFilter: locationFilter,
-                                                                                            feedLength: message.FeedLength,
-                                                                                            direction: (SortDirection)message.Direction));
+                var feedCriteria = new FeedCriteria(
+                    language: message.Language,
+                    publishDate: publishDate,
+                    locationFilter: locationFilter,
+                    feedLength: message.FeedLength,
+                    direction: (SortDirection)message.Direction);
+
+                switch (message)
+                {
+                    case FeedCriteriaMessage.Added added:
+                        return new FeedCriteriaUpdated(newsFeedId: null, feedCriteria: feedCriteria);
+
+                    case FeedCriteriaMessage.Removed removed:
+                        return new FeedCriteriaUpdated(newsFeedId: removed.NewsfeedId, feedCriteria: feedCriteria);
+
+                    case FeedCriteriaMessage.Updated updated:
+                        return new FeedCriteriaUpdated(newsFeedId: updated.NewsfeedId, feedCriteria: feedCriteria);
+
+                    default:
+                        throw new Exception($"FeedCriteriaUpdated message type {message.GetType()} not expected");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return null;
+            }
         }
     }
 }
