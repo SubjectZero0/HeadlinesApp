@@ -106,6 +106,9 @@ namespace HeadlinesApp
         [MessagePackObject]
         public class Updated : FeedCriteriaMessage
         {
+            [Key(10)]
+            public Guid NewsfeedId { get; private set; }
+
             public Updated(int id,
                 string language,
                 DateTime publishDateFrom,
@@ -115,7 +118,8 @@ namespace HeadlinesApp
                 string latitude,
                 int radiusKm,
                 int feedLength,
-                SortDirection direction) : base(id,
+                SortDirection direction,
+                Guid newsfeedId) : base(id,
                                        language,
                                        publishDateFrom,
                                        publishDateTo,
@@ -126,12 +130,16 @@ namespace HeadlinesApp
                                        feedLength,
                                        direction)
             {
+                NewsfeedId = newsfeedId;
             }
         }
 
         [MessagePackObject]
         public class Removed : FeedCriteriaMessage
         {
+            [Key(10)]
+            public Guid NewsfeedId { get; private set; }
+
             public Removed(int id,
                 string language,
                 DateTime publishDateFrom,
@@ -141,7 +149,8 @@ namespace HeadlinesApp
                 string latitude,
                 int radiusKm,
                 int feedLength,
-                SortDirection direction) : base(id,
+                SortDirection direction,
+                Guid newsfeedId) : base(id,
                                        language,
                                        publishDateFrom,
                                        publishDateTo,
@@ -152,6 +161,7 @@ namespace HeadlinesApp
                                        feedLength,
                                        direction)
             {
+                NewsfeedId = newsfeedId;
             }
         }
     }
