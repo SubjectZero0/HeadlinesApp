@@ -1,5 +1,6 @@
 ﻿namespace Domain.Aggregates.NewsFeed
 {
+    [Serializable]
     public class Article : AggregateEntity
     {
         public Guid Id { get; private set; }

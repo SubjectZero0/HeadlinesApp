@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Aggregates.NewsFeed
 {
+    [Serializable]
     public class NewsFeed : RootEntity
     {
         private List<Article> _articles;

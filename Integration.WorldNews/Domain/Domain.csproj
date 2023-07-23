@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="DomainEvents\FeedCriteria\" />
-    <Folder Include="DomainEvents\NewsFeed\" />
-  </ItemGroup>
-
 </Project>

@@ -1,5 +1,6 @@
 ﻿namespace Domain.Aggregates.NewsFeed
 {
+    [Serializable]
     public class LocationFilter : ValueObject
     {
         public string LocationName { get; private set; }

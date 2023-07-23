@@ -1,5 +1,6 @@
 ﻿namespace Domain.Aggregates.NewsFeed
 {
+    [Serializable]
     public class FeedCriteria : ValueObject
     {
         public enum SortDirection
@@ -45,6 +46,15 @@
             LocationFilter = locationFilter ?? LocationFilter;
             FeedLength = feedLength ?? FeedLength;
             Direction = direction ?? Direction;
+        }
+
+        internal void Default()
+        {
+            Language = "en";
+            PublishDate = new PublishDate(DateTime.UtcNow, DateTime.UtcNow.AddHours(-23));
+            LocationFilter = new LocationFilter("New York", "-73.935242", "40.730610");
+            FeedLength = 20;
+            Direction = SortDirection.desc;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace Domain.Aggregates.NewsFeed
 {
+    [Serializable]
     public class PublishDate : ValueObject
     {
         public DateTime From { get; private set; }
